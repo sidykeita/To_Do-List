@@ -1,23 +1,4 @@
 function addTodo() {
-    const todoInput = document.getElementById('todoInput');
-    const todoList = document.getElementById('todoList');
-    
-    if (todoInput.value.trim() === '') {
-        alert('Veuillez entrer une tâche!');
-        return;
-    }
-    const li = document.createElement('li');
-    li.textContent = todoInput.value;
-    
-    // Optionnel : ajouter une fonction pour supprimer une tâche
-    li.addEventListener('click', function() {
-        todoList.removeChild(li);
-    });
-    todoList.appendChild(li);
-    todoInput.value = ''; // vider l'input
-}
-
-function addTodo() {
     const todoInput = document.getElementById("todoInput");
     const todoList = document.getElementById("todoList");
     if (todoInput.value.trim() === "") {
@@ -35,6 +16,13 @@ function addTodo() {
       editBtn.onclick = function () {
         editTodo(todoEl);
       };
+      // Bouton de suppression
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerText = "Supprimer";
+      deleteBtn.onclick = function() {
+          deleteTodo(todoEl);
+      };
+      todoEl.appendChild(deleteBtn);
       todoEl.appendChild(editBtn);
       todoList.appendChild(todoEl);
       todoInput.value = "";
@@ -67,4 +55,7 @@ function addTodo() {
         };
         todoEl.appendChild(editBtn);
     }
+  }
+  function deleteTodo(todoEl) {
+      todosList.removeChild(todoEl);
   }
